@@ -18,4 +18,4 @@ find_package(ROOT REQUIRED)
 include(${ROOT_USE_FILE})
 
 add_executable(NueRedo main.cpp)
-target_link_libraries(NueRedo ${ROOT_LIBRARIES})
+target_link_libraries(NueRedo ${ROOT_LIBRARIES} Core)
