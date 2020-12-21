@@ -88,45 +88,45 @@ std::vector<std::tuple<double, double, double, double, double, double, double, d
 
     double min_log_lower = TMath::Log10(1.0E-3);
     double max_log_lower = TMath::Log10(0.25);
-    double step_log_lower = (max_log_lower - min_log_lower) / 51.;
+    double step_log_lower = (max_log_lower - min_log_lower) / 50.;
     double min_log_upper = TMath::Log10(0.25);
     double max_log_upper = TMath::Log10(0.5);
-    double step_log_upper = (max_log_upper - min_log_upper) / 51.;
+    double step_log_upper = (max_log_upper - min_log_upper) / 50.;
 
-    for (unsigned int i = 0; i < 51; ++i) {
+    for (unsigned int i = 0; i < 50; ++i) {
         double y_log = min_log_lower + step_log_lower * (double) i;
         double y = TMath::Power(10, y_log);
-        for (unsigned int j = 0; j < 51; ++j) {
+        for (unsigned int j = 0; j < 50; ++j) {
             double x_log = min_log_lower + step_log_lower * (double) j;
             double x = TMath::Power(10, x_log);
             profiled_chi2_graph2d->SetPoint(profiled_chi2_graph2d->GetN(), x, y, max_chi2);
         }
     }
 
-    for (unsigned int i = 0; i < 51; ++i) {
+    for (unsigned int i = 0; i < 50; ++i) {
         double y_log = min_log_lower + step_log_lower * (double) i;
         double y = TMath::Power(10, y_log);
-        for (unsigned int j = 50; j < 101; ++j) {
+        for (unsigned int j = 50; j < 100; ++j) {
             double x_log = min_log_upper + step_log_upper * (double) (j - 50);
             double x = TMath::Power(10, x_log);
             profiled_chi2_graph2d->SetPoint(profiled_chi2_graph2d->GetN(), x, y, max_chi2);
         }
     }
 
-    for (unsigned int i = 50; i < 101; ++i) {
+    for (unsigned int i = 50; i < 100; ++i) {
         double y_log = min_log_upper + step_log_upper * (double) (i - 50);
         double y = TMath::Power(10, y_log);
-        for (unsigned int j = 0; j < 51; ++j) {
+        for (unsigned int j = 0; j < 50; ++j) {
             double x_log = min_log_lower + step_log_lower * (double) j;
             double x = TMath::Power(10, x_log);
             profiled_chi2_graph2d->SetPoint(profiled_chi2_graph2d->GetN(), x, y, max_chi2);
         }
     }
 
-    for (unsigned int i = 50; i < 101; ++i) {
+    for (unsigned int i = 50; i < 100; ++i) {
         double y_log = min_log_upper + step_log_upper * (double) (i - 50);
         double y = TMath::Power(10, y_log);
-        for (unsigned int j = 50; j < 101; ++j) {
+        for (unsigned int j = 50; j < 100; ++j) {
             double x_log = min_log_upper + step_log_upper * (double) (j - 50);
             double x = TMath::Power(10, x_log);
             profiled_chi2_graph2d->SetPoint(profiled_chi2_graph2d->GetN(), x, y, max_chi2);
@@ -160,7 +160,7 @@ std::vector<std::tuple<double, double, double, double, double, double, double, d
 }
 
 int main() {
-    std::vector<std::string> file_list = ReadFileList("../ListFile.txt", "../../DM0d010/");
+    std::vector<std::string> file_list = ReadFileList("ListFile.txt", "../DM0d009/");
 
     std::vector<std::tuple<double, double, double, double, double, double, double, double>> profiled_tgraph2d = MakeProfiledChi2Surface();
 
